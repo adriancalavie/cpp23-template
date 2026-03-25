@@ -28,7 +28,7 @@ jobs:
 
       - name: configure (windows)
         if: matrix.os == 'windows-latest'
-        run: xmake config -m release --cc="C:/Program Files/LLVM/bin/clang++" --cxx="C:/Program Files/LLVM/bin/clang++"
+        run: xmake config -m release --toolchain=clang
 
       - name: configure (unix)
         if: matrix.os != 'windows-latest'

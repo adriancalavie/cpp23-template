@@ -58,8 +58,8 @@ on_load(function(target)
         target:add("cxxflags", "-stdlib=libc++", { force = true })
         target:add("ldflags", "-stdlib=libc++", "-lc++abi", { force = true })
     elseif is_plat("windows") then
-        target:add("cxxflags", "-stdlib=libc++", { force = true })
-        target:add("ldflags", "-stdlib=libc++", { force = true })
+        -- clang on windows uses MSVC STL by default, don't force libc++
+        target:add("cxxflags", "-Wall", "-Wextra", { force = true })
     end
 end)
 
