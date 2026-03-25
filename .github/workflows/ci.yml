@@ -13,8 +13,12 @@ jobs:
 
       - name: install llvm (ubuntu)
         if: matrix.os == 'ubuntu-latest'
-        run: sudo apt-get install -y clang libc++-dev libc++abi-dev
-
+        run: |
+          wget https://apt.llvm.org/llvm.sh
+          chmod +x llvm.sh
+          sudo ./llvm.sh 19
+          sudo apt-get install -y libc++-19-dev libc++abi-19-dev
+          sudo update-alternatives --install /usr/bin/clang++ clang++ /usr/bin/clang++-19 100
       - name: install llvm (macos)
         if: matrix.os == 'macos-latest'
         run: brew install llvm
