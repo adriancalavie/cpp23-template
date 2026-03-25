@@ -9,27 +9,29 @@ jobs:
     runs-on: ${{ matrix.os }}
 
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v4
 
       - name: install llvm (ubuntu)
         if: matrix.os == 'ubuntu-latest'
         run: |
           wget https://apt.llvm.org/llvm.sh
           chmod +x llvm.sh
-          sudo ./llvm.sh 19
-          sudo apt-get install -y libc++-19-dev libc++abi-19-dev
-          sudo update-alternatives --install /usr/bin/clang++ clang++ /usr/bin/clang++-19 100
+          sudo ./llvm.sh 20
+          sudo apt-get install -y libc++-20-dev libc++abi-20-dev
+          sudo update-alternatives --install /usr/bin/clang++ clang++ /usr/bin/clang++-20 100
+
       - name: install llvm (macos)
         if: matrix.os == 'macos-latest'
         run: brew install llvm
 
-      - name: install llvm (windows)
-        if: matrix.os == 'windows-latest'
-        run: choco install llvm --version=19.1.0 -y
-
       - uses: xmake-io/github-action-setup-xmake@v1
 
-      - name: configure
+      - name: configure (windows)
+        if: matrix.os == 'windows-latest'
+        run: xmake config -m release --cc="C:/Program Files/LLVM/bin/clang++" --cxx="C:/Program Files/LLVM/bin/clang++"
+
+      - name: configure (unix)
+        if: matrix.os != 'windows-latest'
         run: xmake config -m release --cc=clang++ --cxx=clang++
 
       - name: build
