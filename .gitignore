@@ -1,0 +1,14 @@
+# xmake
+build/
+.xmake/
+bin/
+
+# clangd
+.cache/
+
+# compile commands
+# (if needed, can commit compile_commands.json for CI)
+compile_commands.json
+
+# macOS
+.DS_Store

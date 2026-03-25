@@ -1,0 +1,32 @@
+Checks: >
+  clang-diagnostic-*,
+  clang-analyzer-*,
+  bugprone-*,
+  modernize-*,
+  performance-*,
+  readability-identifier-naming,
+  readability-braces-around-statements,
+  -modernize-use-trailing-return-type,
+  -modernize-avoid-c-arrays
+
+WarningsAsErrors: "bugprone-*,performance-*"
+
+CheckOptions:
+  # snake_case for everything value-like (matches Rust)
+  - { key: readability-identifier-naming.VariableCase,        value: lower_case }
+  - { key: readability-identifier-naming.ParameterCase,       value: lower_case }
+  - { key: readability-identifier-naming.FunctionCase,        value: lower_case }
+  - { key: readability-identifier-naming.MemberCase,          value: lower_case }
+  - { key: readability-identifier-naming.PrivateMemberSuffix, value: _  }
+
+  # PascalCase for types (matches Rust)
+  - { key: readability-identifier-naming.ClassCase,           value: CamelCase }
+  - { key: readability-identifier-naming.StructCase,          value: CamelCase }
+  - { key: readability-identifier-naming.EnumCase,            value: CamelCase }
+  - { key: readability-identifier-naming.TypeAliasCase,       value: CamelCase }
+  - { key: readability-identifier-naming.TemplateParameterCase, value: CamelCase }
+
+  # SCREAMING_SNAKE_CASE for constants/macros (matches Rust)
+  - { key: readability-identifier-naming.ConstantCase,        value: UPPER_CASE }
+  - { key: readability-identifier-naming.EnumConstantCase,    value: UPPER_CASE }
+  - { key: readability-identifier-naming.MacroDefinitionCase, value: UPPER_CASE }

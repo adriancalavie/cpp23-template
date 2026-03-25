@@ -1,0 +1,34 @@
+[
+  {
+    "label": "debug cpp23-template (macOS/Linux)",
+    "build": {
+      "command": "xmake",
+      "args": [
+        "config",
+        "-m",
+        "debug"
+      ],
+      "cwd": "$ZED_WORKTREE_ROOT"
+    },
+    "program": "$ZED_WORKTREE_ROOT/bin/cpp23-template",
+    "request": "launch",
+    "cwd": "$ZED_WORKTREE_ROOT",
+    "adapter": "CodeLLDB"
+  },
+  {
+    "label": "debug cpp23-template (Windows)",
+    "build": {
+      "command": "xmake",
+      "args": [
+        "config",
+        "-m",
+        "debug"
+      ],
+      "cwd": "$ZED_WORKTREE_ROOT"
+    },
+    "program": "$ZED_WORKTREE_ROOT/bin/cpp23-template.exe",
+    "request": "launch",
+    "cwd": "$ZED_WORKTREE_ROOT",
+    "adapter": "CodeLLDB"
+  }
+]

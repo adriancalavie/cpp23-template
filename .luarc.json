@@ -1,0 +1,41 @@
+{
+  "runtime.version": "Lua 5.4",
+  "diagnostics.globals": [
+    "add_rules",
+    "target",
+    "set_kind",
+    "set_languages",
+    "add_cxxflags",
+    "add_files",
+    "add_ldflags",
+    "add_packages",
+    "add_requires",
+    "add_deps",
+    "add_links",
+    "add_includedirs",
+    "add_defines",
+    "includes",
+    "option",
+    "task",
+    "before_build",
+    "after_build",
+    "on_run",
+    "set_default",
+    "set_menu",
+    "set_optimize",
+    "set_project",
+    "set_targetdir",
+    "set_toolchains",
+    "set_version",
+    "set_warnings",
+    "is_arch",
+    "is_host",
+    "is_mode",
+    "is_plat",
+    "import",
+        "on_load"
+  ],
+  "diagnostics.disable": [
+    "undefined-field"
+  ]
+}

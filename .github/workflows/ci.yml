@@ -1,0 +1,31 @@
+name: CI
+on: [push, pull_request]
+
+jobs:
+  build:
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: install llvm (ubuntu)
+        if: matrix.os == 'ubuntu-latest'
+        run: sudo apt-get install -y clang libc++-dev libc++abi-dev
+
+      - name: install llvm (macos)
+        if: matrix.os == 'macos-latest'
+        run: brew install llvm
+
+      - uses: xmake-io/github-action-setup-xmake@v1
+
+      - name: configure
+        run: xmake config -m release --cc=clang++ --cxx=clang++
+
+      - name: build
+        run: xmake
+
+      - name: run
+        run: xmake run

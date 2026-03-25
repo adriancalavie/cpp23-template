@@ -1,0 +1,27 @@
+# yaml-language-server: $schema=https://json.schemastore.org/clang-format-21.x.json
+BasedOnStyle: LLVM
+PointerAlignment: Left
+ReferenceAlignment: Left
+IndentWidth: 4
+ColumnLimit: 100
+
+# Braces
+BreakBeforeBraces: Attach
+InsertBraces: true          # C++23: enforces braces on all if/for/while
+
+# Spacing & readability
+SpaceAfterCStyleCast: false
+SpaceBeforeParens: ControlStatements
+SeparateDefinitionBlocks: Always   # blank line between top-level defs, very Rust-like
+
+# Don't collapse things onto one line
+AllowShortFunctionsOnASingleLine: Empty
+AllowShortIfStatementsOnASingleLine: Never
+AllowShortLoopsOnASingleLine: false
+AllowShortLambdasOnASingleLine: Inline
+
+# Includes
+SortIncludes:
+  Enabled: true
+  IgnoreCase: false    # case-sensitive sorting, stdlib < project headers
+IncludeBlocks: Regroup
